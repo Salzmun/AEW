@@ -29,6 +29,6 @@ function hideButtons() {
     $('#site_choice').hide();
 }
 $(function () {
-    $('#openfile_start').draggable();
+    $('.circlebutton_t').draggable();
 });
 //# sourceMappingURL=app.js.map

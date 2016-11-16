@@ -42,5 +42,5 @@ function hideButtons() {
 }
 
 $(function () {
-    $('#openfile_start').draggable();
+    $('.circlebutton_t').draggable();
 });
