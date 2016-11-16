@@ -44,10 +44,12 @@ margin-top: -150px;
 }
 
 .superdiv {
-
-
-
-
+    position:absolute;
+    border: 5px solid #000000;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .cbtn_add{
