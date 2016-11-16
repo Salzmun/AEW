@@ -1,19 +1,31 @@
-﻿body {
+﻿html{
+    height: 100%;
+    margin: 0;
+}
+
+body {
     font-family: 'Segoe UI', sans-serif;
+    height: 100%;
+    margin:0;
 }
 
 span {
     font-style: italic;
 }
 
+#topspace{
+    float: left; 
+    width: 1px;
+     height: 50%;
+	 margin-bottom: -150px;
+}
 #structbuttons{
 position: absolute;
-width: 1000px;
 height: 300px;
 top: 50%;
 left: 50%;
+margin-left: -405px;
 margin-top: -150px;
-margin-left: -480px;
 }
 
 
@@ -83,11 +95,12 @@ margin-left: -480px;
 }
 
 .toolbox {
-float:left;
+position: absolute;
 padding:10px;
 background:#ffffff;
 border: 2.5px solid #000000;
 top: 50%;
+margin-top: -250px;
 
 }
 
