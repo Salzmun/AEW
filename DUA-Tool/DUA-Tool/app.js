@@ -28,7 +28,4 @@ function showDrawing() {
 function hideButtons() {
     $('#site_choice').hide();
 }
-$(function () {
-    $('#openfile_start').draggable();
-});
 //# sourceMappingURL=app.js.map
