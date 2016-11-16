@@ -28,7 +28,4 @@ function showDrawing() {
 function hideButtons() {
     $('#site_choice').hide();
 }
-$(function () {
-    $('.circlebutton_t').draggable();
-});
 //# sourceMappingURL=app.js.map

@@ -1,7 +1,4 @@
 ﻿
-
-
-
 function imageClick(url) {
     window.location = url;
 }
@@ -40,7 +37,3 @@ function showDrawing() {
 function hideButtons() {
     $('#site_choice').hide();
 }
-
-$(function () {
-    $('.circlebutton_t').draggable();
-});
