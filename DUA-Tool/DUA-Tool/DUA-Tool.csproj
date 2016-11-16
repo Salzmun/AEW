@@ -27,6 +27,7 @@
     <Content Include="index.html" />
     <Content Include="packages.config" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="Scripts\fabric.js" />
     <Content Include="Scripts\fabric.min.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
@@ -39,7 +40,6 @@
   <ItemGroup>
     <TypeScriptCompile Include="app.ts" />
     <TypeScriptCompile Include="main_module.ts" />
-    <TypeScriptCompile Include="main_module_classfree.ts" />
     <TypeScriptCompile Include="Scripts\typings\fabricjs\fabricjs.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
   </ItemGroup>

@@ -1,15 +1,14 @@
 var Graphic;
 (function (Graphic) {
-    var _graphic;
-    function Start() {
-        if (!_graphic)
-            _graphic = new Designer();
-    }
-    Graphic.Start = Start;
+    //var _graphic: Designer;
+    //export function Start() {
+    //    if (!_graphic)
+    //        _graphic = new Designer();
     var Designer = (function () {
         function Designer() {
-            this.canvas = new fabric.Canvas('canv', { selection: false });
+            this._canvas = new fabric.Canvas('canvas');
             fabric.Object.prototype.originX = fabric.Object.prototype.originY = 'center';
+            this.addNode(100, 100);
         }
         Designer.prototype.addNode = function (left, top) {
             var c = new fabric.Circle({
@@ -21,7 +20,7 @@ var Graphic;
                 stroke: '#666'
             });
             c.hasControls = c.hasBorders = false;
-            canvas.add(c);
+            this._canvas.add(c);
         };
         Designer.prototype.makeLine = function (coords) {
             var line = new fabric.Line(coords, {
@@ -50,7 +49,7 @@ var Graphic;
         };
         return Designer;
     }());
+    Graphic.Designer = Designer;
 })(Graphic || (Graphic = {}));
-if ($)
-    $(document).ready(Graphic.Start);
+var designer = new Graphic.Designer();
 //# sourceMappingURL=main_module.js.map

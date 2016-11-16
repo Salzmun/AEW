@@ -1,20 +1,19 @@
 ﻿module Graphic {
-    var _graphic: Designer;
+    //var _graphic: Designer;
 
-    export function Start() {
-        if (!_graphic)
-            _graphic = new Designer();
-    }
+    //export function Start() {
+    //    if (!_graphic)
+    //        _graphic = new Designer();
 
-    class Designer {
-
-        canvas: fabric.ICanvas;
+    export class Designer {
+        _canvas: fabric.ICanvas;
 
         constructor() {
-            this.canvas = new fabric.Canvas('canv', { selection: false });
+            this._canvas = new fabric.Canvas('canvas');
             fabric.Object.prototype.originX = fabric.Object.prototype.originY = 'center';
 
-        }4
+            this.addNode(100, 100);
+        }
 
         addNode(left, top) {
             var c = new fabric.Circle({
@@ -26,7 +25,7 @@
                 stroke: '#666'
             });
             c.hasControls = c.hasBorders = false;
-              canvas.add(c);
+              this._canvas.add(c);
         }
 
         makeLine(coords) {
@@ -71,5 +70,5 @@
     }
 }
 
-if ($)
-    $(document).ready(Graphic.Start);
+var designer = new Graphic.Designer();
+
