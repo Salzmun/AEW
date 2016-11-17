@@ -15,7 +15,7 @@ jsPlumb.ready(function (e) {
             ui.helper.remove();
             $(droppedElement).removeAttr("class");
             jsPlumb.repaint(ui.helper);
-            $(droppedElement).addClass("node_p");
+            $(droppedElement).addClass("node_tree");
             $(droppedElement).draggable({
                 containment: "canvas"
             });
