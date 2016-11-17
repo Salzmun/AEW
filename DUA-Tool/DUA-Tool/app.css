@@ -109,3 +109,23 @@ margin-top: -250px;
     height: 100%;
 }
 
+.canvas{
+    float:right;
+}
+
+
+.node{
+     border-radius: 50%;
+    border: 2.5px solid #000000;
+    width: 50px;
+    height : 50px;
+    opacity: 0.5;
+    background-image: url("openfile.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 40px;
+    margin: 5px;
+}
+
+
+

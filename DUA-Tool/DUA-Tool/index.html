@@ -6,7 +6,7 @@
     <title>TypeScript HTML App</title>
     <link rel="stylesheet" href="app.css" type="text/css" />
     <script src="Scripts/jquery-3.1.1.min.js"></script>
-    <script src="jsPlumb-2.2.3-min.js"></script>
+    <script src="Scripts/jsPlumb-2.2.3-min.js""></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="app.js" ></script>
 </head>
@@ -24,8 +24,8 @@
 </div> 
     <div id="site_drawing" style="display: none">
     <div class="toolbox">
-        <div class="circlebutton_t" "></div>
-        <div class="circlebutton_t" "></div>
+        
+        <div class="circlebutton_t" onclick="click_open()"></div>
         <div class="circlebutton_t" "></div>
         <div class="circlebutton_t" "></div>
         <div class="circlebutton_t" "></div>
@@ -33,6 +33,9 @@
         <div class="circlebutton_t" "></div>
         <div class="circlebutton_t" "></div>
     </div>
+        <div class="canvas" id="canvas">
+
+        </div>
     </div>
 </body>
 </html>
