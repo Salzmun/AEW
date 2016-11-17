@@ -1,7 +1,7 @@
 var id = 0;
 jsPlumb.ready(function (e) {
     jsPlumb.setContainer($('#canvas'));
-    $(".toolbox").draggable({
+    $(".cbtn_add").draggable({
         helper: 'clone',
         cursor: 'pointer',
         tolerance: 'fit',
@@ -68,7 +68,7 @@ function click_delete() {
         jsPlumb.removeAllEndpoints(this.id);
         $(this).remove();
     });
-    $('#canvas').bind('click', function () {
+    $('.canvas').bind('click', function () {
         $('.node_p').unbind();
     });
 }
