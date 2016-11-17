@@ -1,4 +1,4 @@
-﻿
+﻿var id = 0;
 function imageClick(url) {
     window.location = url;
 }
@@ -12,7 +12,16 @@ function hoverout(x) {
 }
 
 function click_open() {
-    $("#fileLoader").click();
+    //$("#fileLoader").click();
+    id++;
+    var endpointOptions = { isSource: true, isTarget: true };
+
+    var structure = $('<div class="node" id="' + id + '" > </div>');
+    $('#canvas').append(structure);
+    jsPlumb.addEndpoint(id.toString(), endpointOptions);
+    jsPlumb.draggable(id.toString());
+    jsPlumb.connect({ source: "1", target: "2" });
+
 }
 
 function treeClick() {
