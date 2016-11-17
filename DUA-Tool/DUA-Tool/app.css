@@ -44,16 +44,16 @@ margin-top: -150px;
     margin-right: 5px;
 }
 
-.graph{
-    background-image: url("graph.png");
+.graph {
+    background-image: url('Image/Graph.png');
 }
 
-.tree{
-    background-image: url("tree.png");
+.tree {
+    background-image: url('Image/tree.png');
 }
 
-.list{
-    background-image: url("list.png");
+.list {
+    background-image: url('Image/list.png');
 }
 
 .structbutton:hover{opacity: 1.0;}
@@ -67,7 +67,6 @@ margin-top: -150px;
     width: 100px;
     height : 100px;
     opacity: 0.5;
-    background-image: url("openfile.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 90px;
@@ -116,7 +115,7 @@ margin-top: -250px;
 
 .node{
     position:absolute;
-     border-radius: 50%;
+    border-radius: 50%;
     border: 2.5px solid #000000;
     width: 50px;
     height : 50px;
@@ -130,8 +129,8 @@ margin-top: -250px;
 }
 
 .node_tree{
-     position:absolute;
-     border-radius: 50%;
+    position:absolute;
+    border-radius: 50%;
     border: 2.5px solid #000000;
     width: 50px;
     height : 50px;
@@ -144,7 +143,17 @@ margin-top: -250px;
     top: 30%;
 }
 .node_list {
-
+    position:absolute;
+    border-radius: 5%;
+    border: 2.5px solid #000000;
+    width: 50px;
+    height : 50px;
+    opacity: 0.5;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 40px;
+    margin: 5px;
+    right: 50%;
 }
 
 .node_graph {
@@ -162,52 +171,52 @@ margin-top: -250px;
     top: 30%;
 }
 
-.cbtn_add{
+.cbtn_add {
     border-radius: 50%;
     border: 2.5px solid #000000;
     width: 50px;
-    height : 50px;
+    height: 50px;
     opacity: 0.5;
-    background-image: url("addnode.png");
+    background-image: url('Image/AddNode.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: 40px;
     margin: 5px;
 }
 
-.cbtn_del{
+.cbtn_del {
     border-radius: 50%;
     border: 2.5px solid #000000;
     width: 50px;
-    height : 50px;
+    height: 50px;
     opacity: 0.5;
-    background-image: url("deletenode.png");
+    background-image: url('Image/DeleteNode.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: 40px;
     margin: 5px;
 }
 
-.cbtn_con{
+.cbtn_con {
     border-radius: 50%;
     border: 2.5px solid #000000;
     width: 50px;
-    height : 50px;
+    height: 50px;
     opacity: 0.5;
-    background-image: url("connector.png");
+    background-image: url('Image/AddConnector.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: 40px;
     margin: 5px;
 }
 
-.cbtn_opn{
+.cbtn_opn {
     border-radius: 50%;
     border: 2.5px solid #000000;
     width: 50px;
-    height : 50px;
+    height: 50px;
     opacity: 0.5;
-    background-image: url("openfile.png");
+    background-image: url('Image/uplFile.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: 40px;
@@ -227,39 +236,39 @@ margin-top: -250px;
     margin: 5px;
 }
 
-.cbtn_lbl{
+.cbtn_lbl {
     border-radius: 50%;
     border: 2.5px solid #000000;
     width: 50px;
-    height : 50px;
+    height: 50px;
     opacity: 0.5;
-    background-image: url("label.png");
+    background-image: url('Image/text.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: 40px;
     margin: 5px;
 }
 
-.cbtn_sav{
+.cbtn_sav {
     border-radius: 50%;
     border: 2.5px solid #000000;
     width: 50px;
-    height : 50px;
+    height: 50px;
     opacity: 0.5;
-    background-image: url("savefile.png");
+    background-image: url('Image/dwnFile.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: 40px;
     margin: 5px;
 }
 
-.cbtn_new{
+.cbtn_new {
     border-radius: 50%;
     border: 2.5px solid #000000;
     width: 50px;
-    height : 50px;
+    height: 50px;
     opacity: 0.5;
-    background-image: url("newpage.png");
+    background-image: url('Image/newpage.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: 40px;
