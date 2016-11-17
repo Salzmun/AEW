@@ -9,10 +9,12 @@
         _canvas: fabric.ICanvas;
 
         constructor() {
-            this._canvas = new fabric.Canvas('canvas');
+
+            this._canvas = new fabric.Canvas('c');
+            this._canvas.interactive = false;
             fabric.Object.prototype.originX = fabric.Object.prototype.originY = 'center';
 
-            this.addNode(100, 100);
+            this._canvas.add(this.addNode(100, 100));
         }
 
         addNode(left, top) {
@@ -24,8 +26,7 @@
                 fill: '#fff',
                 stroke: '#666'
             });
-            c.hasControls = c.hasBorders = false;
-              this._canvas.add(c);
+            return c;
         }
 
         makeLine(coords) {

@@ -6,9 +6,10 @@ var Graphic;
     //        _graphic = new Designer();
     var Designer = (function () {
         function Designer() {
-            this._canvas = new fabric.Canvas('canvas');
+            this._canvas = new fabric.Canvas('c');
+            this._canvas.interactive = false;
             fabric.Object.prototype.originX = fabric.Object.prototype.originY = 'center';
-            this.addNode(100, 100);
+            this._canvas.add(this.addNode(100, 100));
         }
         Designer.prototype.addNode = function (left, top) {
             var c = new fabric.Circle({
@@ -19,8 +20,7 @@ var Graphic;
                 fill: '#fff',
                 stroke: '#666'
             });
-            c.hasControls = c.hasBorders = false;
-            this._canvas.add(c);
+            return c;
         };
         Designer.prototype.makeLine = function (coords) {
             var line = new fabric.Line(coords, {
