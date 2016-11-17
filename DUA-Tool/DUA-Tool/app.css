@@ -115,6 +115,7 @@ margin-top: -250px;
 
 
 .node{
+    position:absolute;
      border-radius: 50%;
     border: 2.5px solid #000000;
     width: 50px;
@@ -125,6 +126,23 @@ margin-top: -250px;
     background-repeat: no-repeat;
     background-size: 40px;
     margin: 5px;
+    right: 50%;
+}
+
+.node_p{
+     position:absolute;
+     border-radius: 50%;
+    border: 2.5px solid #000000;
+    width: 50px;
+    height : 50px;
+    opacity: 0.5;
+    background-image: url("openfile.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 40px;
+    margin: 5px;
+    right: 50%;
+    top: 30%;
 }
 
 
