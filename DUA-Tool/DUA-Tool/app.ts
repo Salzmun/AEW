@@ -1,4 +1,5 @@
 ﻿var id = 0;
+var stype;
 
 function imageClick(url) {
     window.location = url;
@@ -15,14 +16,30 @@ function hoverout(x) {
 function click_addNode() {
     //$("#fileLoader").click();
     id++;
-    var endpointOptions = { isSource: false, isTarget: true };
-    var endpointOptions1 = { isSource: true, isTarget: false, maxConnections: -1, connector: ["Straight"] };
-
-    var structure = $('<div class="node_tree" id="' + id + '" > </div>');
+    var endpointOptions;
+    var endpointOptions1;
+    var anchorOptions;
+    switch (stype) {
+        case "ntree":
+            endpointOptions = { isSource: false, isTarget: true };
+            endpointOptions1 = { isSource: true, isTarget: false, maxConnections: -1, connector: ["Straight"] };
+            break;
+        case "ngraph":
+            anchorOptions: {
+                anchor: ["Perimeter", { shape: "Circle" }]
+            endpointOptions = { isSource: false, isTarget: true, maxConnections: -1 };
+            endpointOptions1 = { isSource: true, isTarget: false, maxConnections: -1, connector: ["Straight"] };
+            break;
+        case "nlist":
+            endpointOptions = { isSource: true, isTarget: true, maxConnections: 2 };
+            endpointOptions1 = { isSource: true, isTarget: true, maxConnections: 2, connector: ["Bezier"] };
+            break;
+    }
+    var structure = $('<div class="node ' + stype + '" id="' + id + '" > </div>');
     $('#canvas').append(structure);
-    jsPlumb.addEndpoint(id.toString(), { anchor: "Top" }, endpointOptions);
-    jsPlumb.addEndpoint(id.toString(), { anchor: "Bottom" }, endpointOptions1);
-    jsPlumb.draggable($(".node_tree"));
+    jsPlumb.addEndpoint(id.toString(), { anchors: ["Top", "Left"] }, endpointOptions);
+    jsPlumb.addEndpoint(id.toString(), { anchors: ["Bottom", "Right"] }, endpointOptions1);
+    jsPlumb.draggable($(".node"));
     //jsPlumb.connect({ source: "1", target: "2" });
 
 }
@@ -30,16 +47,21 @@ function click_addNode() {
 function treeClick() {
     hideButtons();
     showDrawing();
+    stype = "ntree";
+    $('#cbtn_con').hide();
 }
 
 function graphClick() {
     hideButtons();
     showDrawing();
+    stype = "ngraph";
 }
 
 function listClick() {
     hideButtons();
     showDrawing();
+    stype = "nlist";
+    $('#cbtn_con').hide();
 }
 
 function showDrawing() {
@@ -51,15 +73,16 @@ function hideButtons() {
 }
 
 function click_delete() {
-    $('.node_tree').bind('click', function () {
+    $('.node').bind('click', function () {
         jsPlumb.detachAllConnections(this.id);
         jsPlumb.removeAllEndpoints(this.id);
         $(this).remove();
     });
 
     $('.canvas').bind('click', function () {
-        $('.node_tree').unbind();
+        $('.node').unbind();
     });
 
 
 }
+
