@@ -4,24 +4,9 @@ var id1 = 0;
 var id2 = 0;
 var chmod = 0;
 
-    var __script: DUA();
-    export function Main() {
-        if (!__script)
-            __script = new DUA();
+var stype: string;
 
-
-    }
-
-   class DUA {
-        _id: number;
-        _stype: String;
-        _ncon: String;
-
-        constructor() {
-            this._id = 0;
-        }
-
-        imageClick =(url)=> {
+function imageClick(url) {
             window.location = url;
         }
 
@@ -43,7 +28,7 @@ function click_addNode() {
             //jsPlumb.addEndpoint(id.toString(), { anchors: "Top" }, endpointOptions);
             //jsPlumb.addEndpoint(id.toString(), { anchors: "Bottom" }, endpointOptions);
             break;
-        case "nlist":
+        case "nlist": 
             endpointOptions = { isSource: true, isTarget: true, maxConnections: 2 };
             endpointOptions1 = { isSource: true, isTarget: true, maxConnections: 2, connector: ["Bezier"] };
             break;
@@ -74,11 +59,11 @@ function listClick() {
     $('#cbtn_con').hide();
 }
 
-        showDrawing =()=> {
+function showDrawing() {
             $('#site_drawing').show();
         }
 
-        hideButtons =()=> {
+  function hideButtons() {
             $('#site_choice').hide();
         }
 

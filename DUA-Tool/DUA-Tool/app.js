@@ -1,24 +1,9 @@
 "use strict";
 var id = 0;
 var stype;
-var id1 = 0;
-var id2 = 0;
-var chmod = 0;
-var __script = ();
-function Main() {
-    if (!__script)
-        __script = new DUA();
+function imageClick(url) {
+    window.location = url;
 }
-exports.Main = Main;
-var DUA = (function () {
-    function DUA() {
-        this.imageClick = function (url) {
-            window.location = url;
-        };
-        this._id = 0;
-    }
-    return DUA;
-}());
 function click_addNode() {
     //$("#fileLoader").click();
     id++;
