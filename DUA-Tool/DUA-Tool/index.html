@@ -21,22 +21,21 @@
     <div id="openfile_start" class="circlebutton" onclick="click_open()"></div>
 
     
-</div> 
-    <div id="site_drawing" style="display: none">
+</div>
+     
+    <div id="site_drawing" class="heufer" style="display: none">
     <div class="toolbox">
         
-        <div id="ode" class="cbtn_add" onclick="$(__script).prototype.click_addNode()"></div>
-        <div id="con" class="cbtn_con" onclick="Graphic.DUA.prototype.click_addCon()"></div>
+        <div id="node" class="cbtn_add" onclick="click_addNode()"></div>
+        <div id="con" class="cbtn_con" onclick="click_addCon()"></div>
         <div id="txt" class="cbtn_lbl" onclick="click_addText()"></div>
         <div id="del" class="cbtn_del" onclick="click_delete()"></div>
         <div id="edit" class="cbtn_edt" onclick="click_editText()"></div>
         <div id="new" class="cbtn_new" onclick="click_newFile()"></div>
         <div id="open" class="cbtn_opn" onclick="click_openFile()"></div>
         <div id="save" class="cbtn_sav" onclick="click_saveFile()"></div>
-    </div>
-        <div class="canvas" id="canvas">
-
         </div>
+        <div class="canvas" id="canvas"> </div>
     </div>
 </body>
 </html>

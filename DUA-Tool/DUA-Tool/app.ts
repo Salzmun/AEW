@@ -1,24 +1,8 @@
 ﻿var id = 0;
-var stype;
 
-    var __script: DUA();
-    export function Main() {
-        if (!__script)
-            __script = new DUA();
+var stype: string;
 
-
-    }
-
-   class DUA {
-        _id: number;
-        _stype: String;
-        _ncon: String;
-
-        constructor() {
-            this._id = 0;
-        }
-
-        imageClick =(url)=> {
+function imageClick(url) {
             window.location = url;
         }
 
@@ -34,12 +18,11 @@ function click_addNode() {
             endpointOptions1 = { isSource: true, isTarget: false, maxConnections: -1, connector: ["Straight"] };
             break;
         case "ngraph":
-            anchorOptions: {
-                anchor: ["Perimeter", { shape: "Circle" }]
+            anchorOptions: { anchor: ["Perimeter", { shape: "Circle" }]
             endpointOptions = { isSource: false, isTarget: true, maxConnections: -1 };
             endpointOptions1 = { isSource: true, isTarget: false, maxConnections: -1, connector: ["Straight"] };
             break;
-        case "nlist":
+        case "nlist": 
             endpointOptions = { isSource: true, isTarget: true, maxConnections: 2 };
             endpointOptions1 = { isSource: true, isTarget: true, maxConnections: 2, connector: ["Bezier"] };
             break;
@@ -73,11 +56,11 @@ function listClick() {
     $('#cbtn_con').hide();
 }
 
-        showDrawing =()=> {
+function showDrawing() {
             $('#site_drawing').show();
         }
 
-        hideButtons =()=> {
+  function hideButtons() {
             $('#site_choice').hide();
         }
 
@@ -93,7 +76,4 @@ function click_delete() {
     });
 
     }
-
-
-}
 
