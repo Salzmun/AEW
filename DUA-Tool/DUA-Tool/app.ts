@@ -1,4 +1,5 @@
-﻿module Graphic{
+﻿var id = 0;
+var stype;
 
     var __script: DUA();
     export function Main() {
@@ -21,38 +22,56 @@
             window.location = url;
         }
 
-        click_addNode =() => {
-            //$("#fileLoader").click();
-            this._id++;
-            var endpointOptions = { isSource: false, isTarget: true };
-            var endpointOptions1 = { isSource: true, isTarget: false, maxConnections: -1, connector: ["Straight"] };
-
-            var structure = $('<div class="' + this._stype +'" id="' + this._id + '" > </div>');
-            $('#canvas').append(structure);
-            jsPlumb.addEndpoint(id.toString(), { anchor: "Top" }, endpointOptions);
-            jsPlumb.addEndpoint(id.toString(), { anchor: "Bottom" }, endpointOptions1);
-            jsPlumb.draggable($(".node_tree"));
-            //jsPlumb.connect({ source: "1", target: "2" });
+function click_addNode() {
+    //$("#fileLoader").click();
+    id++;
+    var endpointOptions;
+    var endpointOptions1;
+    var anchorOptions;
+    switch (stype) {
+        case "ntree":
+            endpointOptions = { isSource: false, isTarget: true };
+            endpointOptions1 = { isSource: true, isTarget: false, maxConnections: -1, connector: ["Straight"] };
+            break;
+        case "ngraph":
+            anchorOptions: {
+                anchor: ["Perimeter", { shape: "Circle" }]
+            endpointOptions = { isSource: false, isTarget: true, maxConnections: -1 };
+            endpointOptions1 = { isSource: true, isTarget: false, maxConnections: -1, connector: ["Straight"] };
+            break;
+        case "nlist":
+            endpointOptions = { isSource: true, isTarget: true, maxConnections: 2 };
+            endpointOptions1 = { isSource: true, isTarget: true, maxConnections: 2, connector: ["Bezier"] };
+            break;
+    }
+    var structure = $('<div class="node ' + stype + '" id="' + id + '" > </div>');
+    $('#canvas').append(structure);
+    jsPlumb.addEndpoint(id.toString(), { anchors: ["Top", "Left"] }, endpointOptions);
+    jsPlumb.addEndpoint(id.toString(), { anchors: ["Bottom", "Right"] }, endpointOptions1);
+    jsPlumb.draggable($(".node"));
+    //jsPlumb.connect({ source: "1", target: "2" });
 
         }
 
-        treeClick = () => {
-            this.hideButtons();
-            this.showDrawing();
-            this._stype = "ntree";
-        }
+function treeClick() {
+    hideButtons();
+    showDrawing();
+    stype = "ntree";
+    $('#cbtn_con').hide();
+}
 
-        graphClick = () => {
-            this.hideButtons();
-            this.showDrawing();
-            this._stype = "ngraph";
-        }
+function graphClick() {
+    hideButtons();
+    showDrawing();
+    stype = "ngraph";
+}
 
-        listClick=()=> {
-            this.hideButtons();
-            this.showDrawing();
-            this._stype = "nlist";
-        }
+function listClick() {
+    hideButtons();
+    showDrawing();
+    stype = "nlist";
+    $('#cbtn_con').hide();
+}
 
         showDrawing =()=> {
             $('#site_drawing').show();
@@ -62,83 +81,19 @@
             $('#site_choice').hide();
         }
 
-        click_delete=()=> {
-            $('.node_tree').bind('click', function () {
-                jsPlumb.detachAllConnections(this.id);
-                jsPlumb.removeAllEndpoints(this.id);
-                $(this).remove();
-            });
+function click_delete() {
+    $('.node').bind('click', function () {
+        jsPlumb.detachAllConnections(this.id);
+        jsPlumb.removeAllEndpoints(this.id);
+        $(this).remove();
+    });
 
-            $('.canvas').bind('click', function () {
-                $('.node_tree').unbind();
-            });
-        }
+    $('.canvas').bind('click', function () {
+        $('.node').unbind();
+    });
 
     }
 
 
 }
 
-if ($)
-    $().ready(Graphic.Main);
-
-//var id = 0;
-//var stype: string;
-//var ncon: string;
-
-//function imageClick(url) {
-//    window.location = url;
-//}
-
-//function click_addNode() {
-//    //$("#fileLoader").click();
-//    id++;
-//    var endpointOptions = { isSource: false, isTarget: true };
-//    var endpointOptions1 = { isSource: true, isTarget: false, maxConnections: -1, connector: ["Straight"] };
-
-//    var structure = $('<div class="node_tree" id="' + id + '" > </div>');
-//    $('#canvas').append(structure);
-//    jsPlumb.addEndpoint(id.toString(), { anchor: "Top" }, endpointOptions);
-//    jsPlumb.addEndpoint(id.toString(), { anchor: "Bottom" }, endpointOptions1);
-//    jsPlumb.draggable($(".node_tree"));
-//    //jsPlumb.connect({ source: "1", target: "2" });
-
-//}
-
-//function treeClick(str) {
-//    hideButtons();
-//    showDrawing();
-//    stype = str;
-//}
-
-//function graphClick(str) {
-//    hideButtons();
-//    showDrawing();
-//}
-
-//function listClick() {
-//    hideButtons();
-//    showDrawing();
-//}
-
-//function showDrawing() {
-//    $('#site_drawing').show();
-//}
-
-//function hideButtons() {
-//    $('#site_choice').hide();
-//}
-
-//function click_delete() {
-//    $('.node_tree').bind('click', function () {
-//        jsPlumb.detachAllConnections(this.id);
-//        jsPlumb.removeAllEndpoints(this.id);
-//        $(this).remove();
-//    });
-
-//    $('.canvas').bind('click', function () {
-//        $('.node_tree').unbind();
-//    });
-
-
-//}
