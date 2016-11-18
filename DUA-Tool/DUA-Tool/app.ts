@@ -4,17 +4,26 @@ var id1 = 0;
 var id2 = 0;
 var chmod = 0;
 
-function imageClick(url) {
-    window.location = url;
-}
+    var __script: DUA();
+    export function Main() {
+        if (!__script)
+            __script = new DUA();
 
-function hover(x) {
-    x.style.opacity = "1.0";
-}
 
-function hoverout(x) {
-    x.style.opacity = "0.5";
-}
+    }
+
+   class DUA {
+        _id: number;
+        _stype: String;
+        _ncon: String;
+
+        constructor() {
+            this._id = 0;
+        }
+
+        imageClick =(url)=> {
+            window.location = url;
+        }
 
 function click_addNode() {
     //$("#fileLoader").click();
@@ -43,7 +52,7 @@ function click_addNode() {
     jsPlumb.draggable($(".node"));
     //jsPlumb.connect({ source: "1", target: "2" });
 
-}
+        }
 
 function treeClick() {
     hideButtons();
@@ -65,13 +74,13 @@ function listClick() {
     $('#cbtn_con').hide();
 }
 
-function showDrawing() {
-    $('#site_drawing').show();
-}
+        showDrawing =()=> {
+            $('#site_drawing').show();
+        }
 
-function hideButtons() {
-    $('#site_choice').hide();
-}
+        hideButtons =()=> {
+            $('#site_choice').hide();
+        }
 
 function click_delete() {
     $('.node').bind('click', function () {
@@ -83,6 +92,8 @@ function click_delete() {
     $('.canvas').bind('click', function () {
         $('.node').unbind();
     });
+
+    }
 
 
 }
