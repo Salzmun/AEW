@@ -112,6 +112,8 @@ margin-top: -250px;
     float:right;
     height: 100%;
     width: 100%;
+    border:2px solid #808080;
+    border-radius:0.1%
 }
 
 
@@ -121,7 +123,6 @@ margin-top: -250px;
     border: 2.5px solid #000000;
     width: 50px;
     height : 50px;
-    opacity: 0.5;
     background-image: url("openfile.png");
     background-position: center;
     background-repeat: no-repeat;
@@ -130,13 +131,9 @@ margin-top: -250px;
     right: 50%;
 }
 
-.node_tree{
+.ntree{
     position:absolute;
     border-radius: 50%;
-    border: 2.5px solid #000000;
-    width: 50px;
-    height : 50px;
-    opacity: 0.5;
     background-position: center;
     background-repeat: no-repeat;
     background-size: 40px;
@@ -144,13 +141,9 @@ margin-top: -250px;
     right: 50%;
     top: 30%;
 }
-.node_list {
+.nlist {
     position:absolute;
     border-radius: 5%;
-    border: 2.5px solid #000000;
-    width: 50px;
-    height : 50px;
-    opacity: 0.5;
     background-position: center;
     background-repeat: no-repeat;
     background-size: 40px;
@@ -158,13 +151,8 @@ margin-top: -250px;
     right: 50%;
 }
 
-.node_graph {
-    position:absolute;
+.ngraph {
     border-radius: 50%;
-    border: 2.5px solid #000000;
-    width: 50px;
-    height : 50px;
-    opacity: 0.5;
     background-position: center;
     background-repeat: no-repeat;
     background-size: 40px;
@@ -231,7 +219,7 @@ margin-top: -250px;
     width: 50px;
     height : 50px;
     opacity: 0.5;
-    background-image: url("edit.png");
+    background-image: url("Image/edit.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 40px;
@@ -276,6 +264,5 @@ margin-top: -250px;
     background-size: 40px;
     margin: 5px;
 }
-
 
 
