@@ -1,5 +1,8 @@
 var id = 0;
 var stype;
+var id1 = 0;
+var id2 = 0;
+var chmod = 0;
 function imageClick(url) {
     window.location = url;
 }
@@ -15,27 +18,23 @@ function click_addNode() {
     var endpointOptions;
     var endpointOptions1;
     var anchorOptions;
+    var structure = $('<div class="node ' + stype + '" id="' + id + '" > </div>');
+    $('#canvas').append(structure);
     switch (stype) {
         case "ntree":
             endpointOptions = { isSource: false, isTarget: true };
             endpointOptions1 = { isSource: true, isTarget: false, maxConnections: -1, connector: ["Straight"] };
             break;
         case "ngraph":
-            anchorOptions: {
-                anchor: ["Perimeter", { shape: "Circle" }];
-                endpointOptions = { isSource: false, isTarget: true, maxConnections: -1 };
-                endpointOptions1 = { isSource: true, isTarget: false, maxConnections: -1, connector: ["Straight"] };
-                break;
-            }
+            endpointOptions = { isSource: true, isTarget: true, maxConnections: -1, connector: ["Straight"] };
+            //jsPlumb.addEndpoint(id.toString(), { anchors: "Top" }, endpointOptions);
+            //jsPlumb.addEndpoint(id.toString(), { anchors: "Bottom" }, endpointOptions);
+            break;
         case "nlist":
             endpointOptions = { isSource: true, isTarget: true, maxConnections: 2 };
             endpointOptions1 = { isSource: true, isTarget: true, maxConnections: 2, connector: ["Bezier"] };
             break;
     }
-    var structure = $('<div class="node ' + stype + '" id="' + id + '" > </div>');
-    $('#canvas').append(structure);
-    jsPlumb.addEndpoint(id.toString(), { anchors: ["Top", "Left"] }, endpointOptions);
-    jsPlumb.addEndpoint(id.toString(), { anchors: ["Bottom", "Right"] }, endpointOptions1);
     jsPlumb.draggable($(".node"));
     //jsPlumb.connect({ source: "1", target: "2" });
 }
@@ -71,5 +70,36 @@ function click_delete() {
     $('.canvas').bind('click', function () {
         $('.node').unbind();
     });
+}
+function click_chgCon() {
+    if (chmod == 1) {
+        $('#cbtn_add').show();
+        $('.node').unbind();
+        chmod = 0;
+    }
+    else if (chmod == 0) {
+        $('#cbtn_add').hide();
+        chmod = 1;
+        $('.node').bind('click', function () {
+            if (id1 == 0) {
+                id1 = this.id;
+                alert(id1);
+            }
+            else if (id2 == 0) {
+                id2 = this.id;
+                alert(id2);
+            }
+            if (id1, id2 != 0 && id1 != id2) {
+                jsPlumb.connect({ source: id1, target: id2, connector: "Straight", anchor: "Center" });
+                id1 = 0;
+                id2 = 0;
+            }
+            else if (id1 == id2) {
+                id1 = 0;
+                id2 = 0;
+            }
+            alert(id1 + ":" + id2);
+        });
+    }
 }
 //# sourceMappingURL=app.js.map
