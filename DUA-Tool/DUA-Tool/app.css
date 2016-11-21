@@ -193,6 +193,10 @@ margin-top: -250px;
     margin: 5px;
 }
 
+.cbtn_reverse {
+background-image: url('Image/RevertMode.png')
+}
+
 .cbtn_con {
     border-radius: 50%;
     border: 2.5px solid #101010;
