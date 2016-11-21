@@ -34,9 +34,11 @@ function click_addNode() {
 function click_editText() {
     if (txtmod != 1) {
         txtmod = 1;
+        
         $('#cbtn_add').hide();
         $('#cbtn_del').hide();
         $('#cbtn_con').hide();
+        $('#cbtn_edt').addClass("cbtn-clicked");
         $('.node').bind('click', function () {
             var oldtext = document.getElementById(this.id).innerHTML;
             var text = prompt("Please enter a description", oldtext);
@@ -60,6 +62,7 @@ function click_editText() {
         $('#cbtn_add').show();
         $('#cbtn_del').show();
         $('#cbtn_con').show();
+        $('#cbtn_edt').removeClass("cbtn-clicked");
         $('.node').unbind();
         jsPlumb.unbind();
     }
@@ -91,6 +94,7 @@ function click_delete() {
         $('#cbtn_edt').hide();
         $('#cbtn_con').hide();
         $('#toolbox').addClass("toolbox-red");
+        $('#cbtn_del').addClass("cbtn-clicked");
         $('.node').bind('click', function () {
             jsPlumb.detachAllConnections(this.id);
             jsPlumb.removeAllEndpoints(this.id);
@@ -108,6 +112,7 @@ function click_delete() {
         $('.node').unbind();
         jsPlumb.unbind();
         $('#toolbox').removeClass("toolbox-red");
+        $('#cbtn_del').removeClass("cbtn-clicked");
     }
 }
 
@@ -121,6 +126,7 @@ function click_addCon() {
     if (chmod != 0) {
         chmod = 0;
         $('#toolbox').removeClass("toolbox-blue");
+        $('#cbtn_con').removeClass("cbtn-clicked");
         $('#cbtn_add').show();
         $('#cbtn_edt').show();
         $('#cbtn_del').show();
@@ -133,6 +139,7 @@ function click_addCon() {
     else if (chmod != 1) {
         chmod = 1;
         $('#toolbox').addClass("toolbox-blue");
+        $('#cbtn_con').addClass("cbtn-clicked");
         $('#cbtn_add').hide();
         $('#cbtn_edt').hide();
         $('#cbtn_del').hide();
