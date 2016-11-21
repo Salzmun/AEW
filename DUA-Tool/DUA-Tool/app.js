@@ -34,36 +34,57 @@ function click_addNode() {
     jsPlumb.draggable($(".node"));
     //jsPlumb.connect({ source: "1", target: "2" });
 }
-function addText() {
-}
+/**
+ *
+ */
 function editText() {
+    $('.node').bind('click', function () {
+        return this.id;
+    });
+    $('.canvas').bind('click', function () {
+        $('.node').unbind();
+        jsPlumb.unbind();
+        $('.canvas').unbind();
+    });
 }
-function treeClick() {
-    hideButtons();
-    showDrawing();
-    stype = "ntree";
-    contype = "Straight";
-    //$('#cbtn_con').hide();
-}
-function graphClick() {
-    hideButtons();
-    showDrawing();
-    contype = "Straight";
-    stype = "ngraph";
-}
-function listClick() {
-    hideButtons();
-    showDrawing();
-    contype = "Bezier";
-    stype = "nlist";
-    //$('#cbtn_con').hide();
-}
-function showDrawing() {
-    $('#site_drawing').show();
-}
-function hideButtons() {
+/**
+ *
+ */
+function clickSelect(s1, s2) {
     $('#site_choice').hide();
+    $('#site_drawing').show();
+    stype = s1;
+    contype = s2;
 }
+//function treeClick() {
+//    hideButtons();
+//    showDrawing();
+//    stype = "ntree";
+//    contype = "Straight";
+//    //$('#cbtn_con').hide();
+//}
+//function graphClick() {
+//    hideButtons();
+//    showDrawing();
+//    contype = "Straight";
+//    stype = "ngraph";
+//}
+//function listClick() {
+//    hideButtons();
+//    showDrawing();
+//    contype = "Bezier";
+//    stype = "nlist";
+//    //$('#cbtn_con').hide();
+//}
+//function showDrawing() {
+//            $('#site_drawing').show();
+//        }
+//  function hideButtons() {
+//            $('#site_choice').hide();
+//        }
+/**
+ *
+ */
 function click_delete() {
     id1 = 0;
     id2 = 0;
@@ -85,6 +106,9 @@ function click_delete() {
         chmod == 0;
     });
 }
+/**
+*this is a description of the function click_chgCon()
+*/
 function click_chgCon() {
     id1 = 0;
     id2 = 0;
@@ -105,10 +129,8 @@ function click_chgCon() {
             }
             if (id1, id2 != 0 && id1 != id2) {
                 jsPlumb.connect({
-                    source: id1, target: id2, connector: [contype], anchor: "Center", overlays: [
-                        "Arrow",
-                        ["Label", { label: "foo", location: 0.25, id: "myLabel" }]
-                    ], });
+                    source: id1, target: id2, connector: [contype], anchor: "Center"
+                });
                 id1 = 0;
                 id2 = 0;
             }
@@ -119,6 +141,9 @@ function click_chgCon() {
         });
     }
 }
+/**
+ *
+ */
 function click_newFile() {
     window.open('index.html', '_blank');
 }
