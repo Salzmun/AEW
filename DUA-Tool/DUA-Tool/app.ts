@@ -3,7 +3,6 @@ var stype;
 var id1 = 0;
 var id2 = 0;
 var chmod = 0;
-
 var stype: string;
 var contype: string;
 
@@ -39,6 +38,14 @@ function click_addNode() {
     //jsPlumb.connect({ source: "1", target: "2" });
 
         }
+
+function addText() {
+
+
+}
+
+function editText() {
+}
 
 function treeClick() {
     hideButtons();
@@ -107,7 +114,11 @@ function click_chgCon() {
             }
 
             if (id1, id2 != 0 && id1 != id2) {
-                jsPlumb.connect({ source: id1, target: id2, connector: "Straight", anchor: "Center" });
+                jsPlumb.connect({
+                    source: id1, target: id2, connector: [contype], anchor: "Center", overlays: [
+                        "Arrow",
+                        ["Label", { label: "foo", location: 0.25, id: "myLabel" }]
+                    ], });
                 id1 = 0;
                 id2 = 0;
             } 

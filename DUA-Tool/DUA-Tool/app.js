@@ -34,6 +34,10 @@ function click_addNode() {
     jsPlumb.draggable($(".node"));
     //jsPlumb.connect({ source: "1", target: "2" });
 }
+function addText() {
+}
+function editText() {
+}
 function treeClick() {
     hideButtons();
     showDrawing();
@@ -93,7 +97,11 @@ function click_chgCon() {
                 id2 = this.id;
             }
             if (id1, id2 != 0 && id1 != id2) {
-                jsPlumb.connect({ source: id1, target: id2, connector: "Straight", anchor: "Center" });
+                jsPlumb.connect({
+                    source: id1, target: id2, connector: [contype], anchor: "Center", overlays: [
+                        "Arrow",
+                        ["Label", { label: "foo", location: 0.25, id: "myLabel" }]
+                    ], });
                 id1 = 0;
                 id2 = 0;
             }
