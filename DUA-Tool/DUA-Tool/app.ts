@@ -1,35 +1,33 @@
-﻿var id = 0;
-var id1: number;
-var id2: number;
-var chmod = 0;
-var conmod = 0;
-var delmod: number;
-var txtmod: number;
-var stype: string;
-var contype: string;
-var overlays: string;
+﻿var nodeid = 0; // ID-counter fopr div's added
+var firstnodeid: number; // ID of the node firs selected in connector-modes (add / change)
+var secondnodeid: number; // ID of the second node in connector-modes (add / change)
 
+var chmod: number //Number to check if   Value: 0 or 1
+var conmod: number; //Number to check if "add Connector" mode is active, Value: 0 or 1
+var delmod: number; //Number to check if delete mode is active, Value: 0 or 1
+var txtmod: number; //Number to check if textEdit/textAdd mode is active, Value: 0 or 1
 
-function imageClick(url) {
-            window.location = url;
-        }
+var stype: string; //
+var contype: string; //
+var overlays: string; //
 
 /**
  *  Adds a div and sets it's css-classes according to the selected display mode ( graph, list, tree), sets it draggable to!
+ *  Useable in all toolboxes 
  */
 function click_addNode() {
-    id++;
+    nodeid++;
     var endpointOptions;
     var endpointOptions1;
     var anchorOptions;
-    var structure = $('<div class="node ' + stype + '" id="' + id + '" > </div>');
+    var structure = $('<div class="node ' + stype + '" id="' + nodeid + '" > </div>');
     $('#canvas').append(structure);
     jsPlumb.draggable($(".node"));
 }
 
 /**
  *  Function to access a div's or jsPlumb-Connector's text and let's the user change it through a prompt-popup
- *  
+ *  Useable in all toolboxes
  */
 function click_editText() {
     if (txtmod != 1) {
@@ -80,11 +78,12 @@ function clickSelect(s1:string, s2:string) {
 
 
 /**
- * 
+ * Activates the Delete-mode, which allows you to remove
+ * used in all toolboxes
  */
 function click_delete() {
-    id1 = 0;
-    id2 = 0;
+    firstnodeid = 0;
+    secondnodeid = 0;
     if (delmod != 1) {
         delmod = 1;
         $('#cbtn_add').hide();
@@ -113,11 +112,12 @@ function click_delete() {
 
 
 /**
-* This function is used to change the used connector type while in connector-adding mode for graphs.
+* function to start the "add connector"-mode
+* used in all toolboxes
 */
 function click_addCon() {
-    id1 = 0;
-    id2 = 0;
+    firstnodeid = 0;
+    secondnodeid = 0;
     if (chmod != 0) {
         chmod = 0;
         $('#toolbox').removeClass("toolbox-blue");
@@ -141,22 +141,22 @@ function click_addCon() {
         }
         
         $('.node').bind('click', function () {
-            if (id1 == 0) {
-                id1 = this.id;
-            } else if (id2 == 0) {
-                id2 = this.id;
+            if (firstnodeid == 0) {
+                firstnodeid = this.id;
+            } else if (secondnodeid == 0) {
+                secondnodeid = this.id;
             }
 
-            if (id1, id2 != 0 && id1 != id2) {
+            if (firstnodeid, secondnodeid != 0 && firstnodeid != secondnodeid) {
                 jsPlumb.connect({
-                    source: id1, target: id2, connector: [contype], anchor: "Center", overlays: overlays });
-                id1 = 0;
-                id2 = 0;
+                    source: firstnodeid, target: secondnodeid, connector: [contype], anchor: "Center", overlays: overlays });
+                firstnodeid = 0;
+                secondnodeid = 0;
             } 
 
-            if (id1 == id2) {
-                id1 = 0;
-                id2 = 0;
+            if (firstnodeid == secondnodeid) {
+                firstnodeid = 0;
+                secondnodeid = 0;
             }
 
         });
@@ -166,7 +166,8 @@ function click_addCon() {
 }
 
 /**
- * 
+ * function to toggle the connectors between simple line and arrow
+ * Used in the Toolbox for graphs during add-connector mode
  */
 function click_chgCon() {
     if (conmod != 1) {
@@ -185,7 +186,8 @@ function click_chgCon() {
 }
 
 /**
- * Opens a new Page/File of the Structtool 
+ * Opens a new Page/File of the Structtool
+ * Used in the Toolbox
  */
 function click_newFile() {
     window.open('index.html', '_blank');
