@@ -53,7 +53,6 @@ function graphClick() {
     showDrawing();
     contype = "Straight";
     stype = "ngraph";
-
 }
 
 function listClick() {
@@ -73,6 +72,8 @@ function showDrawing() {
         }
 
 function click_delete() {
+    id1 = 0;
+    id2 = 0;
     $('.node').bind('click', function () {
         jsPlumb.detachAllConnections(this.id);
         jsPlumb.removeAllEndpoints(this.id);
@@ -81,11 +82,15 @@ function click_delete() {
 
     $('.canvas').bind('click', function () {
         $('.node').unbind();
+        $('.canvas').unbind();
+        chmod == 0;
     });
 
     }
 
 function click_chgCon() {
+    id1 = 0;
+    id2 = 0;
     if (chmod == 1) {
         $('#cbtn_add').show();
         $('.node').unbind();
@@ -97,23 +102,24 @@ function click_chgCon() {
         $('.node').bind('click', function () {
             if (id1 == 0) {
                 id1 = this.id;
-                alert(id1);
             } else if (id2 == 0) {
                 id2 = this.id;
-                alert(id2);
             }
 
             if (id1, id2 != 0 && id1 != id2) {
-                jsPlumb.connect({ source: id1, target: id2, connector: "Straight", anchor:"Center" });
+                jsPlumb.connect({ source: id1, target: id2, connector: "Straight", anchor: "Center" });
                 id1 = 0;
                 id2 = 0;
-            } else if (id1 == id2) {
+            } 
+
+            if (id1 == id2) {
                 id1 = 0;
                 id2 = 0;
             }
-            alert(id1 + ":" + id2);
+
         });
 
     }
+
 }
 
