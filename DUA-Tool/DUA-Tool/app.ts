@@ -4,6 +4,7 @@ var id2 = 0;
 var chmod = 0;
 var conmod = 0;
 var delmod = 0;
+var txtmod = 0;
 var stype: string;
 var contype: string;
 var overlays= "";
@@ -25,18 +26,32 @@ function click_addNode() {
 /**
  * 
  */
-function editText() {
-    $('.node').bind('click', function () {
-        return this.id;
-    });
+function click_editText() {
+    if (txtmod == 0) {
+        txtmod = 1;
+        $('.node').bind('click', function () {
+            var oldtext = document.getElementById(this.id).innerHTML;
+            var text = prompt("Please enter a description", oldtext);
 
+            if (text != null) {
+                document.getElementById(this.id).innerHTML = text;
+            }
 
+        });
 
-    $('.canvas').bind('click', function () {
+        jsPlumb.bind('click', function (conn) {
+            var label = conn.getOverlay("myLabel");
+            var oldtextc = label.getLabel();
+            var textc = prompt("Please enter a description", oldtextc);
+            if (textc != null) {
+                label.setLabel(textc);
+            }
+        }
+    } else if (txtmod == 1) {
+        txtmod = 0;
         $('.node').unbind();
         jsPlumb.unbind();
-        $('.canvas').unbind();
-    });
+    }
 }
 
 /**
@@ -128,6 +143,8 @@ function click_addCon() {
     else if (chmod == 0) {
         $('#toolbox').addClass("toolbox-blue");
         $('#cbtn_add').hide();
+        $('#cbtn_edt').hide();
+        $('#cbtn_add').hide();
         if (stype == "ngraph") {
             $('#cbtn_conch').show();
         }
@@ -163,7 +180,7 @@ function click_chgCon() {
         conmod = 1;
         overlays = [
             ["Arrow", { location: -25 }],
-            ["Label", { label: "foo", location: 0.25, id: "myLabel" }]
+            ["Label", { location: 0.25, id: "myLabel" }]
         ]
 
     } else if (conmod == 1) {
