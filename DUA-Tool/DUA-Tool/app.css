@@ -103,6 +103,17 @@ margin-top: -250px;
 
 }
 
+.toolbox-red{
+    border-color: indianred;
+}
+
+.toolbox-blue{
+    border-color: dodgerblue;
+}
+
+.toolbox-green{
+    border-color: lightgreen;
+}
 #site_drawing{
     width: 100%;
     height: 100%;
@@ -116,7 +127,6 @@ margin-top: -250px;
     border-radius:0.1%;
     z-index: 0;
 }
-
 
 .node{
     position:absolute;
@@ -183,6 +193,23 @@ margin-top: -250px;
 }
 
 .cbtn_con {
+    border-radius: 50%;
+    border: 2.5px solid #101010;
+    width: 50px;
+    height: 50px;
+    opacity: 0.5;
+    background-image: url('Image/AddConnector.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 40px;
+    margin: 5px;
+}
+
+.cbtn_con-clicked{
+    background-image: url('Image/Back.png')
+}
+
+.cbtn_conch {
     border-radius: 50%;
     border: 2.5px solid #101010;
     width: 50px;
