@@ -31,6 +31,7 @@ function editText() {
     });
 
 
+
     $('.canvas').bind('click', function () {
         $('.node').unbind();
         jsPlumb.unbind();
@@ -112,7 +113,7 @@ function click_delete() {
 /**
 *this is a description of the function click_chgCon()
 */
-function click_chgCon() {
+function click_addCon() {
     id1 = 0;
     id2 = 0;
     if (chmod == 1) {

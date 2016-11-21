@@ -95,7 +95,7 @@ function click_delete() {
 /**
 *this is a description of the function click_chgCon()
 */
-function click_chgCon() {
+function click_addCon() {
     id1 = 0;
     id2 = 0;
     if (chmod == 1) {
@@ -149,6 +149,9 @@ function click_chgCon() {
         conmod = 0;
     }
 }
+/**
+ *
+ */
 function click_newFile() {
     window.open('index.html', '_blank');
 }
