@@ -27,8 +27,11 @@ function click_addNode() {
  * 
  */
 function click_editText() {
-    if (txtmod == 0) {
+    if (txtmod != 1) {
         txtmod = 1;
+        $('#cbtn_add').hide();
+        $('#cbtn_del').hide();
+        $('#cbtn_con').hide();
         $('.node').bind('click', function () {
             var oldtext = document.getElementById(this.id).innerHTML;
             var text = prompt("Please enter a description", oldtext);
@@ -47,8 +50,11 @@ function click_editText() {
                 label.setLabel(textc);
             }
         }
-    } else if (txtmod == 1) {
+    } else if (txtmod != 0) {
         txtmod = 0;
+        $('#cbtn_add').show();
+        $('#cbtn_del').show();
+        $('#cbtn_con').show();
         $('.node').unbind();
         jsPlumb.unbind();
     }
@@ -101,8 +107,11 @@ function clickSelect(s1:string, s2:string) {
 function click_delete() {
     id1 = 0;
     id2 = 0;
-    if (delmod == 0) {
+    if (delmod != 1) {
         delmod = 1;
+        $('#cbtn_add').hide();
+        $('#cbtn_edt').hide();
+        $('#cbtn_con').hide();
         $('#toolbox').addClass("toolbox-red");
         $('.node').bind('click', function () {
             jsPlumb.detachAllConnections(this.id);
@@ -113,8 +122,11 @@ function click_delete() {
         jsPlumb.bind('click', function (conn) {
             jsPlumb.detach(conn);
         });
-    } else if (delmod == 1) {
+    } else if (delmod != 0) {
         delmod = 0;
+        $('#cbtn_add').show();
+        $('#cbtn_edt').show();
+        $('#cbtn_con').show();
         $('.node').unbind();
         jsPlumb.unbind();
         $('#toolbox').removeClass("toolbox-red");
@@ -134,6 +146,8 @@ function click_addCon() {
     if (chmod == 1) {
         $('#toolbox').removeClass("toolbox-blue");
         $('#cbtn_add').show();
+        $('#cbtn_edt').show();
+        $('#cbtn_del').show();
         if (stype == "ngraph") {
             $('#cbtn_conch').hide();
         }
@@ -144,7 +158,7 @@ function click_addCon() {
         $('#toolbox').addClass("toolbox-blue");
         $('#cbtn_add').hide();
         $('#cbtn_edt').hide();
-        $('#cbtn_add').hide();
+        $('#cbtn_del').hide();
         if (stype == "ngraph") {
             $('#cbtn_conch').show();
         }
@@ -175,18 +189,18 @@ function click_addCon() {
 }
 
 function click_chgCon() {
-    if (conmod == 0) {
-        $('#toolbox').addClass("toolbox-green");
+    if (conmod != 1) {
         conmod = 1;
+        $('#cbtn_conch').addClass("cbtn_conch-green");
         overlays = [
             ["Arrow", { location: -25 }],
             ["Label", { location: 0.25, id: "myLabel" }]
         ]
 
-    } else if (conmod == 1) {
-        $('#toolbox').removeClass("toolbox-green");
-        overlays = "";
+    } else if (conmod != 0) {
         conmod = 0;
+        $('#cbtn_conch').removeClass("cbtn_conch-green");
+        overlays = "";
     }
 }
 
