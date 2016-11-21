@@ -72,8 +72,15 @@ function click_delete() {
         jsPlumb.removeAllEndpoints(this.id);
         $(this).remove();
     });
+    jsPlumb.bind('click', function (conn) {
+        jsPlumb.detach(conn);
+        $('.node').unbind();
+        jsPlumb.unbind();
+        $('.canvas').unbind();
+    });
     $('.canvas').bind('click', function () {
         $('.node').unbind();
+        jsPlumb.unbind();
         $('.canvas').unbind();
         chmod == 0;
     });
@@ -111,5 +118,8 @@ function click_chgCon() {
             }
         });
     }
+}
+function click_newFile() {
+    window.open('index.html', '_blank');
 }
 //# sourceMappingURL=app.js.map
