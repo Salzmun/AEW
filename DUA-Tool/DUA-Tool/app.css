@@ -211,7 +211,7 @@ background-image: url('Image/RevertMode.png')
 }
 
 .cbtn_con-clicked{
-    background-image: url('Image/Back.png')
+    background-image: url('Image/Revert.png')
 }
 
 .cbtn_conch {
@@ -227,6 +227,9 @@ background-image: url('Image/RevertMode.png')
     margin: 5px;
 }
 
+.cbtn_conch-green{
+    border-color:  lightgreen;
+}
 .cbtn_opn {
     border-radius: 50%;
     border: 2.5px solid #101010;
