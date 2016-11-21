@@ -19,36 +19,57 @@ function click_addNode() {
     $('#canvas').append(structure);
     jsPlumb.draggable($(".node"));
 }
-function addText() {
-}
+/**
+ *
+ */
 function editText() {
+    $('.node').bind('click', function () {
+        return this.id;
+    });
+    $('.canvas').bind('click', function () {
+        $('.node').unbind();
+        jsPlumb.unbind();
+        $('.canvas').unbind();
+    });
 }
-function treeClick() {
-    hideButtons();
-    showDrawing();
-    stype = "ntree";
-    contype = "Straight";
-    //$('#cbtn_con').hide();
-}
-function graphClick() {
-    hideButtons();
-    showDrawing();
-    contype = "Straight";
-    stype = "ngraph";
-}
-function listClick() {
-    hideButtons();
-    showDrawing();
-    contype = "Bezier";
-    stype = "nlist";
-    //$('#cbtn_con').hide();
-}
-function showDrawing() {
-    $('#site_drawing').show();
-}
-function hideButtons() {
+/**
+ *
+ */
+function clickSelect(s1, s2) {
     $('#site_choice').hide();
+    $('#site_drawing').show();
+    stype = s1;
+    contype = s2;
 }
+//function treeClick() {
+//    hideButtons();
+//    showDrawing();
+//    stype = "ntree";
+//    contype = "Straight";
+//    //$('#cbtn_con').hide();
+//}
+//function graphClick() {
+//    hideButtons();
+//    showDrawing();
+//    contype = "Straight";
+//    stype = "ngraph";
+//}
+//function listClick() {
+//    hideButtons();
+//    showDrawing();
+//    contype = "Bezier";
+//    stype = "nlist";
+//    //$('#cbtn_con').hide();
+//}
+//function showDrawing() {
+//            $('#site_drawing').show();
+//        }
+//  function hideButtons() {
+//            $('#site_choice').hide();
+//        }
+/**
+ *
+ */
 function click_delete() {
     id1 = 0;
     id2 = 0;
@@ -71,6 +92,9 @@ function click_delete() {
         $('#toolbox').removeClass("toolbox-red");
     }
 }
+/**
+*this is a description of the function click_chgCon()
+*/
 function click_addCon() {
     id1 = 0;
     id2 = 0;
@@ -127,6 +151,9 @@ function click_chgCon() {
         conmod = 0;
     }
 }
+/**
+ *
+ */
 function click_newFile() {
     window.open('index.html', '_blank');
 }

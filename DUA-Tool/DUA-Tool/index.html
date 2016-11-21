@@ -12,13 +12,16 @@
 </head>
 <body>
     <div id="site_choice">
-        <input type="file" id="fileLoader" name="files" title="Load File"/>
-        <div id="structbuttons">
-            <div onclick="treeClick()" class="structbutton tree"></div>
-            <div onclick="graphClick()" class="structbutton graph"></div>
-            <div onclick="listClick()" class="structbutton list"></div>
-        </div>  
+    <input type="file" id="fileLoader" name="files" title="Load File"/>
+    <div id="structbuttons">
+        <div onclick="clickSelect('ntree','Straight')" class="structbutton tree"></div>
+        <div onclick="clickSelect('ngraph', 'Straight')" class="structbutton graph"></div>
+        <div onclick="clickSelect('nlist', 'Bezier')" class="structbutton list"></div>
     </div>
+    <div id="openfile_start" class="circlebutton" onclick="click_open()"></div>
+
+    
+</div>
      
     <div id="site_drawing" class="heufer-umlauf" style="display: none">
         <div class="toolbox" id="toolbox">
