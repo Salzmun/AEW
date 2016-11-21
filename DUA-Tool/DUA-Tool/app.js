@@ -1,6 +1,10 @@
-"use strict";
 var id = 0;
 var stype;
+var id1 = 0;
+var id2 = 0;
+var chmod = 0;
+var stype;
+var contype;
 function imageClick(url) {
     window.location = url;
 }
@@ -15,16 +19,16 @@ function click_addNode() {
     switch (stype) {
         case "ntree":
             endpointOptions = { isSource: false, isTarget: true };
-            endpointOptions1 = { isSource: true, isTarget: false, maxConnections: -1, connector: ["Straight"] };
+            endpointOptions1 = { isSource: true, isTarget: false, maxConnections: -1, connector: [contype] };
             break;
         case "ngraph":
-            endpointOptions = { isSource: true, isTarget: true, maxConnections: -1, connector: ["Straight"] };
+            endpointOptions = { isSource: true, isTarget: true, maxConnections: -1, connector: [contype] };
             //jsPlumb.addEndpoint(id.toString(), { anchors: "Top" }, endpointOptions);
             //jsPlumb.addEndpoint(id.toString(), { anchors: "Bottom" }, endpointOptions);
             break;
         case "nlist":
             endpointOptions = { isSource: true, isTarget: true, maxConnections: 2 };
-            endpointOptions1 = { isSource: true, isTarget: true, maxConnections: 2, connector: ["Bezier"] };
+            endpointOptions1 = { isSource: true, isTarget: true, maxConnections: 2, connector: [contype] };
             break;
     }
     jsPlumb.draggable($(".node"));
@@ -34,25 +38,28 @@ function treeClick() {
     hideButtons();
     showDrawing();
     stype = "ntree";
-    $('#cbtn_con').hide();
+    contype = "Straight";
+    //$('#cbtn_con').hide();
 }
 function graphClick() {
     hideButtons();
     showDrawing();
+    contype = "Straight";
     stype = "ngraph";
 }
 function listClick() {
     hideButtons();
     showDrawing();
+    contype = "Bezier";
     stype = "nlist";
-    $('#cbtn_con').hide();
+    //$('#cbtn_con').hide();
 }
-showDrawing = function () {
+function showDrawing() {
     $('#site_drawing').show();
-};
-hideButtons = function () {
+}
+function hideButtons() {
     $('#site_choice').hide();
-};
+}
 function click_delete() {
     $('.node').bind('click', function () {
         jsPlumb.detachAllConnections(this.id);

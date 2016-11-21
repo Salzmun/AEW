@@ -5,6 +5,7 @@ var id2 = 0;
 var chmod = 0;
 
 var stype: string;
+var contype: string;
 
 function imageClick(url) {
             window.location = url;
@@ -21,16 +22,16 @@ function click_addNode() {
     switch (stype) {
         case "ntree":
             endpointOptions = { isSource: false, isTarget: true };
-            endpointOptions1 = { isSource: true, isTarget: false, maxConnections: -1, connector: ["Straight"] };
+            endpointOptions1 = { isSource: true, isTarget: false, maxConnections: -1, connector: [contype] };
             break;
         case "ngraph":
-            endpointOptions = { isSource: true, isTarget: true, maxConnections: -1, connector: ["Straight"] };
+            endpointOptions = { isSource: true, isTarget: true, maxConnections: -1, connector: [contype] };
             //jsPlumb.addEndpoint(id.toString(), { anchors: "Top" }, endpointOptions);
             //jsPlumb.addEndpoint(id.toString(), { anchors: "Bottom" }, endpointOptions);
             break;
         case "nlist": 
             endpointOptions = { isSource: true, isTarget: true, maxConnections: 2 };
-            endpointOptions1 = { isSource: true, isTarget: true, maxConnections: 2, connector: ["Bezier"] };
+            endpointOptions1 = { isSource: true, isTarget: true, maxConnections: 2, connector: [contype] };
             break;
     }
     
@@ -43,20 +44,24 @@ function treeClick() {
     hideButtons();
     showDrawing();
     stype = "ntree";
-    $('#cbtn_con').hide();
+    contype = "Straight";
+    //$('#cbtn_con').hide();
 }
 
 function graphClick() {
     hideButtons();
     showDrawing();
+    contype = "Straight";
     stype = "ngraph";
+
 }
 
 function listClick() {
     hideButtons();
     showDrawing();
+    contype = "Bezier";
     stype = "nlist";
-    $('#cbtn_con').hide();
+    //$('#cbtn_con').hide();
 }
 
 function showDrawing() {
@@ -79,9 +84,6 @@ function click_delete() {
     });
 
     }
-
-
-}
 
 function click_chgCon() {
     if (chmod == 1) {
