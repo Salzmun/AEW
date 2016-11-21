@@ -102,6 +102,8 @@ function click_addCon() {
     else if (chmod == 0) {
         $('#toolbox').addClass("toolbox-blue");
         $('#cbtn_add').hide();
+        $('#cbtn_edt').hide();
+        $('#cbtn_add').hide();
         if (stype == "ngraph") {
             $('#cbtn_conch').show();
         }
