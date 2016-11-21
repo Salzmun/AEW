@@ -1,16 +1,19 @@
 var id = 0;
-var id1 = 0;
-var id2 = 0;
+var id1;
+var id2;
 var chmod = 0;
 var conmod = 0;
-var delmod = 0;
-var txtmod = 0;
+var delmod;
+var txtmod;
 var stype;
 var contype;
-var overlays = "";
+var overlays;
 function imageClick(url) {
     window.location = url;
 }
+/**
+ *  Adds a div and sets it's css-classes according to the selected display mode ( graph, list, tree), sets it draggable to!
+ */
 function click_addNode() {
     id++;
     var endpointOptions;
@@ -21,10 +24,11 @@ function click_addNode() {
     jsPlumb.draggable($(".node"));
 }
 /**
+ *  Function to access a div's or jsPlumb-Connector's text and let's the user change it through a prompt-popup
  *
  */
 function click_editText() {
-    if (txtmod == 0) {
+    if (txtmod != 1) {
         txtmod = 1;
         $('.node').bind('click', function () {
             var oldtext = document.getElementById(this.id).innerHTML;
@@ -42,14 +46,17 @@ function click_editText() {
             }
         });
     }
-    else if (txtmod == 1) {
+    else if (txtmod != 0) {
         txtmod = 0;
         $('.node').unbind();
         jsPlumb.unbind();
     }
 }
 /**
- *
+ * Function to set CSS-Styles for added nodes and toolbox, aka "Choose your struct!"
+ * Used at the selection screen
+ @param {string} s1 - selected structure-type
+ @param {string} s2 - according style for the connectors
  */
 function clickSelect(s1, s2) {
     $('#site_choice').hide();
@@ -57,39 +64,13 @@ function clickSelect(s1, s2) {
     stype = s1;
     contype = s2;
 }
-//function treeClick() {
-//    hideButtons();
-//    showDrawing();
-//    stype = "ntree";
-//    contype = "Straight";
-//    //$('#cbtn_con').hide();
-//}
-//function graphClick() {
-//    hideButtons();
-//    showDrawing();
-//    contype = "Straight";
-//    stype = "ngraph";
-//}
-//function listClick() {
-//    hideButtons();
-//    showDrawing();
-//    contype = "Bezier";
-//    stype = "nlist";
-//    //$('#cbtn_con').hide();
-//}
-//function showDrawing() {
-//            $('#site_drawing').show();
-//        }
-//  function hideButtons() {
-//            $('#site_choice').hide();
-//        }
 /**
  *
  */
 function click_delete() {
     id1 = 0;
     id2 = 0;
-    if (delmod == 0) {
+    if (delmod != 1) {
         delmod = 1;
         $('#toolbox').addClass("toolbox-red");
         $('.node').bind('click', function () {
@@ -101,7 +82,7 @@ function click_delete() {
             jsPlumb.detach(conn);
         });
     }
-    else if (delmod == 1) {
+    else if (delmod != 0) {
         delmod = 0;
         $('.node').unbind();
         jsPlumb.unbind();
@@ -109,29 +90,29 @@ function click_delete() {
     }
 }
 /**
-*this is a description of the function click_chgCon()
+* This function is used to change the used connector type while in connector-adding mode for graphs.
 */
 function click_addCon() {
     id1 = 0;
     id2 = 0;
-    if (chmod == 1) {
+    if (chmod != 0) {
+        chmod = 0;
         $('#toolbox').removeClass("toolbox-blue");
         $('#cbtn_add').show();
         if (stype == "ngraph") {
             $('#cbtn_conch').hide();
         }
         $('.node').unbind();
-        chmod = 0;
     }
-    else if (chmod == 0) {
+    else if (chmod != 1) {
+        chmod = 1;
         $('#toolbox').addClass("toolbox-blue");
         $('#cbtn_add').hide();
-        $('#cbtn_edt').hide();
+        //$('#cbtn_edt').hide();
         $('#cbtn_add').hide();
         if (stype == "ngraph") {
             $('#cbtn_conch').show();
         }
-        chmod = 1;
         $('.node').bind('click', function () {
             if (id1 == 0) {
                 id1 = this.id;
@@ -152,6 +133,9 @@ function click_addCon() {
         });
     }
 }
+/**
+ *
+ */
 function click_chgCon() {
     if (conmod == 0) {
         $('#toolbox').addClass("toolbox-green");
@@ -168,7 +152,7 @@ function click_chgCon() {
     }
 }
 /**
- *
+ * Opens a new Page/File of the Structtool
  */
 function click_newFile() {
     window.open('index.html', '_blank');

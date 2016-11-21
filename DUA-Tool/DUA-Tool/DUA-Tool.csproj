@@ -32,6 +32,7 @@
     <Content Include="Image\newpage.png" />
     <Content Include="Image\nic_cage.jpg" />
     <Content Include="Image\openfile.png" />
+    <Content Include="Image\RevertMode.png" />
     <Content Include="Image\text.png" />
     <Content Include="Image\tree.png" />
     <Content Include="Image\uplFile.png" />
