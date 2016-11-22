@@ -13,6 +13,7 @@ window.onload = function () {
     conmod = 0;
     delmod = 0;
     txtmod = 0;
+	overlays = [["Label", { location: 0.5, id: "myLabel", cssClass: "lbl" }]];
 };
 /**
  *  Adds a div and sets it's css-classes according to the selected display mode ( graph, list, tree), sets it draggable to!
@@ -38,6 +39,7 @@ function click_editText() {
         $('#cbtn_del').hide();
         $('#cbtn_con').hide();
         $('#toolbox').addClass("toolbox-teal");
+		$('#cbtn_edt').removeClass("_edt");
         $('#cbtn_edt').addClass("cbtn-clicked");
         $('.node').bind('click', function () {
             var oldtext = document.getElementById(this.id).innerHTML;
@@ -46,14 +48,16 @@ function click_editText() {
                 document.getElementById(this.id).innerHTML = text;
             }
         });
+		if (stype == "ngraph"){
         jsPlumb.bind('click', function (conn) {
             var label = conn.getOverlay("myLabel");
             var oldtextc = label.getLabel();
             var textc = prompt("Please enter a description", oldtextc);
             if (textc != null) {
-                label.setLabel(textc);
+                label.setLabel('\n' + textc);
             }
         });
+		}
     }
     else if (txtmod != 0) {
         txtmod = 0;
@@ -61,6 +65,7 @@ function click_editText() {
         $('#cbtn_del').show();
         $('#cbtn_con').show();
         $('#cbtn_edt').removeClass("cbtn-clicked");
+		$('#cbtn_edt').addClass("_edt");
         $('#toolbox').removeClass("toolbox-teal");
         $('.node').unbind();
         jsPlumb.unbind();
@@ -77,6 +82,11 @@ function clickSelect(s1, s2) {
     $('#site_drawing').show();
     stype = s1;
     contype = s2;
+	if(stype == "nlist")
+	{
+		overlays = [
+            ["Arrow", { location: -40 }]];
+	}
 }
 /**
  * Activates the Delete-mode, which allows you to remove nodes and connections
@@ -117,8 +127,10 @@ function click_delete() {
 * used in all toolboxes
 */
 function click_addCon() {
-    firstnodeid = 0;
+    $('#' + firstnodeid).removeClass("_selected");
+	firstnodeid = 0;
     secondnodeid = 0;
+
     if (chmod != 0) {
         chmod = 0;
         $('#toolbox').removeClass("toolbox-blue");
@@ -144,19 +156,24 @@ function click_addCon() {
         $('.node').bind('click', function () {
             if (firstnodeid == 0) {
                 firstnodeid = this.id;
+				$('#' + firstnodeid).addClass("_selected");
             }
             else if (secondnodeid == 0) {
                 secondnodeid = this.id;
             }
             if (firstnodeid, secondnodeid != 0 && firstnodeid != secondnodeid) {
                 jsPlumb.connect({
-                    source: firstnodeid, target: secondnodeid, connector: [contype], anchor: "Center", overlays: overlays });
-                firstnodeid = 0;
+				source: firstnodeid, target: secondnodeid, connector: [contype], anchor: "Center", overlays: overlays, paintStyle:{strokeWidth:5, stroke:'rgb(0,0,0)'}});
+                $('#' + firstnodeid).removeClass("_selected");
+				firstnodeid = 0;
                 secondnodeid = 0;
+				
             }
             if (firstnodeid == secondnodeid) {
-                firstnodeid = 0;
+				$('#' + firstnodeid).removeClass("_selected");
+				firstnodeid = 0;
                 secondnodeid = 0;
+				
             }
         });
     }
@@ -168,16 +185,16 @@ function click_addCon() {
 function click_chgCon() {
     if (conmod != 1) {
         conmod = 1;
-        $('#cbtn_conch').addClass("cbtn_conch-green");
+        $('#cbtn_conch').addClass("_conch-green");
         overlays = [
             ["Arrow", { location: -25 }],
-            ["Label", { location: 0.25, id: "myLabel" }]
+            ["Label", { location: 0.25, id: "myLabel", cssClass: "lbl" }]
         ];
     }
     else if (conmod != 0) {
         conmod = 0;
-        $('#cbtn_conch').removeClass("cbtn_conch-green");
-        overlays = "";
+        $('#cbtn_conch').removeClass("_conch-green");
+        overlays = [["Label", { location: 0.5, id: "myLabel", cssClass: "lbl" }]];
     }
 }
 /**

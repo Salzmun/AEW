@@ -1,6 +1,9 @@
 ﻿html{
-    height: 100%;
-    margin: 0;
+width: 100%;
+height: 100%;
+clip: auto;
+position: absolute;
+overflow: hidden;
 }
 
 body {
@@ -144,6 +147,16 @@ margin-top: -250px;
     right: 50%;
     top: 30%;
     text-align:center;
+	background-color:white;
+}
+
+._selected{
+	border-color: green;
+}
+
+.lbl{
+	background-color: white;
+	z-index:100;
 }
 
 .ntree {
@@ -170,120 +183,68 @@ margin-top: -250px;
     border-radius: 50%;
     margin: 5px;
 }
-
-.cbtn_add {
-    border-radius: 50%;
+.cbtn{
+	border-radius: 50%;
     border: 2.5px solid #101010;
-    width: 50px;
-    height: 50px;
+    width: 100px;
+    height: 100px;
     opacity: 0.5;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 90px;
+    margin: 5px;
+}
+
+.cbtn:hover{opacity: 1.0;}
+
+._add {
+ 
     background-image: url('Image/AddNode.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 40px;
-    margin: 5px;
+
 }
 
-.cbtn_del {
-    border-radius: 50%;
-    border: 2.5px solid #101010;
-    width: 50px;
-    height: 50px;
-    opacity: 0.5;
+._del {
+
     background-image: url('Image/DeleteNode.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 40px;
-    margin: 5px;
+
 }
 
-.cbtn_reverse {
-background-image: url('Image/RevertMode.png')
-}
+._con {
 
-.cbtn_con {
-    border-radius: 50%;
-    border: 2.5px solid #101010;
-    width: 50px;
-    height: 50px;
-    opacity: 0.5;
     background-image: url('Image/AddConnector.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 40px;
-    margin: 5px;
+
 }
 
 .cbtn-clicked{
     background-image: url('Image/RevertMode.png');
 }
 
-.cbtn_conch {
-    border-radius: 50%;
-    border: 2.5px solid #101010;
-    width: 50px;
-    height: 50px;
-    opacity: 0.5;
+._conch {
+
     background-image: url('Image/EditConnector.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 40px;
-    margin: 5px;
+
 }
 
-.cbtn_conch-green{
+._conch-green{
     border-color:  lightgreen;
 }
-.cbtn_opn {
-    border-radius: 50%;
-    border: 2.5px solid #101010;
-    width: 50px;
-    height: 50px;
-    opacity: 0.5;
+._opn {
+
     background-image: url('Image/uplFile.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 40px;
-    margin: 5px;
+
 }
 
-.cbtn_edt{
-    border-radius: 50%;
-    border: 2.5px solid #101010;
-    width: 50px;
-    height : 50px;
-    opacity: 0.5;
+._edt{
+
     background-image: url("Image/edit.png");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 40px;
-    margin: 5px;
+
 }
 
-.cbtn_sav {
-    border-radius: 50%;
-    border: 2.5px solid #101010;
-    width: 50px;
-    height: 50px;
-    opacity: 0.5;
-    background-image: url('Image/dwnFile.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 40px;
-    margin: 5px;
-}
 
-.cbtn_new {
-    border-radius: 50%;
-    border: 2.5px solid #101010;
-    width: 50px;
-    height: 50px;
-    opacity: 0.5;
+._new {
+
     background-image: url('Image/newpage.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 40px;
-    margin: 5px;
+
 }
 
 .jtk-endpoint { z-index:-1; }

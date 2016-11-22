@@ -16,6 +16,7 @@ window.onload = function () {
     conmod = 0;
     delmod = 0;
     txtmod = 0;
+	overlays = [["Label", { location: 0.5, id: "myLabel", cssClass: "lbl" }]];
 }
 
 /**
@@ -54,7 +55,7 @@ function click_editText() {
             }
 
         });
-
+		if(stype == "ngraph"){
         jsPlumb.bind('click', function (conn) {
             var label = conn.getOverlay("myLabel");
             var oldtextc = label.getLabel();
@@ -63,6 +64,7 @@ function click_editText() {
                 label.setLabel(textc);
             }
         });
+		}
     }
      else if (txtmod != 0) {
         txtmod = 0;
@@ -192,13 +194,13 @@ function click_chgCon() {
         $('#cbtn_conch').addClass("cbtn_conch-green");
         overlays = [
             ["Arrow", { location: -25 }],
-            ["Label", { location: 0.25, id: "myLabel" }]
+            ["Label", { location: 0.25, id: "myLabel", cssClass: "lbl" }]
         ]
 
     } else if (conmod != 0) {
         conmod = 0;
         $('#cbtn_conch').removeClass("cbtn_conch-green");
-        overlays = "";
+        overlays = [["Label", { location: 0.5, id: "myLabel", cssClass: "lbl" }]];
     }
 }
 
