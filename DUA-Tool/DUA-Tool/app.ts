@@ -11,6 +11,13 @@ var stype: string; //
 var contype: string; //
 var overlays: string; //
 
+window.onload = function () {
+    chmod = 0;
+    conmod = 0;
+    delmod = 0;
+    txtmod = 0;
+}
+
 /**
  *  Adds a div and sets it's css-classes according to the selected display mode ( graph, list, tree), sets it draggable to!
  *  Useable in all toolboxes 
@@ -32,10 +39,11 @@ function click_addNode() {
 function click_editText() {
     if (txtmod != 1) {
         txtmod = 1;
-        
+
         $('#cbtn_add').hide();
         $('#cbtn_del').hide();
         $('#cbtn_con').hide();
+        $('#toolbox').addClass("toolbox-teal");
         $('#cbtn_edt').addClass("cbtn-clicked");
         $('.node').bind('click', function () {
             var oldtext = document.getElementById(this.id).innerHTML;
@@ -54,13 +62,15 @@ function click_editText() {
             if (textc != null) {
                 label.setLabel(textc);
             }
-        }
-    } else if (txtmod != 0) {
+        });
+    }
+     else if (txtmod != 0) {
         txtmod = 0;
         $('#cbtn_add').show();
         $('#cbtn_del').show();
         $('#cbtn_con').show();
         $('#cbtn_edt').removeClass("cbtn-clicked");
+        $('#toolbox').removeClass("toolbox-teal");
         $('.node').unbind();
         jsPlumb.unbind();
     }
@@ -81,7 +91,7 @@ function clickSelect(s1:string, s2:string) {
 
 
 /**
- * Activates the Delete-mode, which allows you to remove
+ * Activates the Delete-mode, which allows you to remove nodes and connections
  * used in all toolboxes
  */
 function click_delete() {

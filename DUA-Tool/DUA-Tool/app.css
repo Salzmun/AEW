@@ -114,6 +114,10 @@ margin-top: -250px;
 .toolbox-green{
     border-color: lightgreen;
 }
+
+.toolbox-teal{
+    border-color: teal;
+}
 #site_drawing{
     width: 100%;
     height: 100%;
@@ -211,7 +215,7 @@ background-image: url('Image/RevertMode.png')
 }
 
 .cbtn-clicked{
-    background-image: url('Image/RevertMode.png')
+    background-image: url('Image/RevertMode.png');
 }
 
 .cbtn_conch {
